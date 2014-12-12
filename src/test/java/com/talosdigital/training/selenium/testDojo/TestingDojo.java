@@ -75,6 +75,7 @@ public class TestingDojo {
         //Get the name item and set the value with name
         List<WebElement> labels = driver.findElements(By.tagName("input"));
         labels.get(0).sendKeys("Andres");
+        labels.get(1).sendKeys("Ruiz");
         /*
         //if the next line discommented the test pass only if the user is a new user 
         //element = driver.findElement(By.className("panel-success"));

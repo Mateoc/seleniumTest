@@ -3,6 +3,7 @@ package com.talosdigital.training.selenium.testDojo;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.Random;
 
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -34,9 +35,9 @@ public class TestingDojo {
         element = driver.findElement(By.id("name"));
         element.sendKeys(name);
         //Get the last_name item and set the value with lastName
-        String lastNmae = "Carvajal";
+        String lastName = "Carvajal";
         element = driver.findElement(By.id("last_name"));
-        element.sendKeys(lastNmae);
+        element.sendKeys(lastName);
         //Get the telephone item and set the value with phone
         String phone = "333333333";
         element = driver.findElement(By.id("telephone"));
@@ -45,17 +46,18 @@ public class TestingDojo {
         Select select = new Select(driver.findElement(By.id("identification_type")));
         select.selectByIndex(2);//.selectByVisibleText("Cédula de extrangería");
         //Get the identification item and set the value with id
-        String id = "asd123asd";
+        Random random = new Random();
+        String id = Integer.toString(random.nextInt());
         element = driver.findElement(By.id("identification"));
         element.sendKeys(id);
         //get the button and submit form
         element = driver.findElement(By.className("btn"));
         element.click();
         //if the next line discommented the test pass only if the user is a new user 
-        //element = driver.findElement(By.className("panel-success"));
+        element = driver.findElement(By.className("panel-success"));
         //Getting the results and testing them
         assertEquals(name, driver.findElement(By.id("firstName")).getText());
-        assertEquals(lastNmae , driver.findElement(By.id("lastName")).getText());
+        assertEquals(lastName , driver.findElement(By.id("lastName")).getText());
         assertEquals(phone, driver.findElement(By.id("telephone")).getText());
         assertEquals("Pasaportes", driver.findElement(By.id("identificationType")).getText());
         assertEquals(id, driver.findElement(By.id("doctorId")).getText());
